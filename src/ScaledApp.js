@@ -29,7 +29,7 @@ const ScaledApp = () => {
 
         if (window.innerWidth > 1000) {
             setIsLaptop(true);
-            console.log(isLaptop);
+            // console.log(isLaptop);
         } else {
             setIsLaptop(false);
             if (!isPortrait) {
@@ -41,7 +41,6 @@ const ScaledApp = () => {
 
         if (localStorage.token) {
             setAuthToken();
-
             <Navigate to="/home" />;
         }
         return () => {

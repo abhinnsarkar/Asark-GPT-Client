@@ -63,11 +63,11 @@ export const sendPrompt = async (options) => {
             options
         );
 
-        const data2 = response;
-        console.log("bare respinse is", data2);
+        // const data2 = await response.json;
+        // console.log("bare respinse is", data2);
         const data = await response.json();
 
-        console.log("api get try ", await response2.json());
+        console.log("api postmprompt  try ", data);
 
         // console.log(typeof data);
         // console.log(Object.keys(data));

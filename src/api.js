@@ -58,14 +58,14 @@ export const sendPrompt = async (options) => {
             "https://asark-gpt-backend.onrender.com/api/prompts",
             options
         );
-        // const response2 = await apiClient.get(
-        //     "https://asark-gpt-backend.onrender.com/api/prompts",
-        //     options
-        // );
+        const response2 = await apiClient.get(
+            "https://asark-gpt-backend.onrender.com/api/prompts",
+            options
+        );
 
         const data = await response.json();
 
-        // console.log("api get try ", await response2.json());
+        console.log("api get try ", await response2.json());
 
         // console.log(typeof data);
         // console.log(Object.keys(data));

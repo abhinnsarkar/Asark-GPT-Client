@@ -111,7 +111,8 @@ export const deleteAccount = (navigate) => {
 };
 
 export const sendPrompt = (promptValue) => {
-    return async (dispatch) => {
+    // return async (dispatch) => {
+    return async () => {
         const options = {
             method: "POST",
             body: JSON.stringify({

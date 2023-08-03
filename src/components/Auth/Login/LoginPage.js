@@ -191,7 +191,7 @@ const LoginPage = ({ isPortrait, login }) => {
                                         onClick={handleSubmit}
                                     >
                                         <Typography textTransform="none">
-                                            Sign Up
+                                            Log In
                                         </Typography>
                                     </Button>
                                 </Box>
@@ -201,8 +201,8 @@ const LoginPage = ({ isPortrait, login }) => {
                                         height: "10%",
                                     }}
                                 >
-                                    <Link to="/login">
-                                        Already Have an account? Login
+                                    <Link to="/register">
+                                        Need an account? Make one!
                                     </Link>
                                 </Box>
                             </Box>

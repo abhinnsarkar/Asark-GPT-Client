@@ -55,5 +55,6 @@
     "main": "server.js",
     "author": "Abhinn Sarkar",
     "license": "ISC",
-    "proxy": "https://asark-gpt-backend.onrender.com"
+    "proxy": "https://asark-gpt-backend.onrender.com",
+    "homepage": "https://asark-gpt-client.onrender.com"
 }

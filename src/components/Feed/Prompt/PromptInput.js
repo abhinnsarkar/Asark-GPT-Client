@@ -122,7 +122,11 @@ export const PromptInput = ({ isLaptop, isPortrait, sendPrompt }) => {
                 user={promptValue}
                 ai={aiValue}
             />
-            <LoadingModal isPortrait={isPortrait} open={loadingOpen} />
+            <LoadingModal
+                isLaptop={isLaptop}
+                isPortrait={isPortrait}
+                open={loadingOpen}
+            />
         </>
     );
 };

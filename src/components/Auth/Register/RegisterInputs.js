@@ -1,5 +1,6 @@
 import React from "react";
 import { CustomInput } from "../CustomInput";
+import { Box } from "@mui/material";
 
 const RegisterInputs = ({
     name,
@@ -10,7 +11,15 @@ const RegisterInputs = ({
     setPassword,
 }) => {
     return (
-        <>
+        <Box
+            sx={{
+                // bgcolor: "red",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-evenly",
+            }}
+        >
             <CustomInput
                 value={name}
                 setValue={setName}
@@ -29,7 +38,7 @@ const RegisterInputs = ({
                 placeholder="Password"
                 type="password"
             />
-        </>
+        </Box>
     );
 };
 

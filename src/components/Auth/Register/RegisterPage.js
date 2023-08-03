@@ -1,4 +1,5 @@
 import { Box, Button, CssBaseline, Typography } from "@mui/material";
+import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import React, { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
@@ -36,70 +37,88 @@ const RegisterPage = ({ isPortrait, register }) => {
                     alignItems: "center",
                     display: "flex",
                     flexDirection: "column",
+                    // bgcolor: "green",
                 }}
             >
                 <Box
+                    className="register-header-box"
                     sx={{
-                        width: "80%",
-                        height: "10%",
-                        alignItems: "center",
+                        width: "100vw",
+                        height: "10vh",
+                        // bgcolor: "red",
                         display: "flex",
-                        flexDirection: "column",
+                        // justifyContent: "center",
+                        // alignItems: "center",
                     }}
                 >
                     <Box
-                        sx={{
-                            width: "73%",
-                            height: "80%",
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                        }}
-                    >
-                        <Button
-                            sx={{
-                                bgcolor: "#32c4a7",
-                                width: isPortrait ? "75%" : "25%",
-                                height: "75%",
-                                color: "white",
-                                borderRadius: "10px",
-                                "&:hover": {
-                                    bgcolor: "#228572",
-                                },
-                            }}
-                            onClick={() => {
-                                navigate("/welcome");
-                            }}
-                        >
-                            <ArrowBackIosNewIcon />{" "}
-                            <Typography textTransform="none">
-                                Back to Welcome
-                            </Typography>
-                        </Button>
-                    </Box>
-                </Box>
-                <Box
-                    sx={{
-                        width: "80%",
-                        height: "80%",
-                        alignItems: "center",
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                >
-                    <Box
+                        className="register-header-center-box-1"
                         sx={{
                             width: "100%",
-                            height: "25%",
-                            justifyContent: "center",
-                            alignItems: "center",
+                            // bgcolor: "orange",
                             display: "flex",
+                            justifyContent: "center",
                         }}
                     >
                         <Box
+                            className="header-title-center-box-2"
                             sx={{
-                                width: "73%",
-                                height: isPortrait ? "50%" : "80%",
+                                // bgcolor: "purple",
+                                width: "75%",
+                            }}
+                        >
+                            <Button
+                                className="register-header-button"
+                                sx={{
+                                    bgcolor: "#32c4a7",
+                                    width: isPortrait ? "90%" : "25%",
+                                    height: "75%",
+                                    color: "white",
+                                    borderRadius: "10px",
+                                    "&:hover": {
+                                        bgcolor: "#228572",
+                                    },
+                                    justifyContent: "flex-start",
+                                }}
+                                onClick={() => {
+                                    navigate("/welcome");
+                                }}
+                            >
+                                <ArrowBackIosNewIcon />{" "}
+                                <Typography textTransform="none">
+                                    Back to Welcome
+                                </Typography>
+                            </Button>
+                        </Box>
+                    </Box>
+                </Box>
+
+                <Box
+                    className="register-title-box"
+                    sx={{
+                        width: "100vw",
+                        height: "12vh",
+                        height: isPortrait ? "12vh" : "15vh",
+                        // bgcolor: "blue",
+                        display: "flex",
+                        // alignItems: "center",
+                    }}
+                >
+                    <Box
+                        className="register-title-center-box-1"
+                        sx={{
+                            width: "100%",
+                            // bgcolor: "orange",
+                            display: "flex",
+                            justifyContent: "center",
+                            marginBottom: 0,
+                        }}
+                    >
+                        <Box
+                            className="register-title-center-box-2"
+                            sx={{
+                                // bgcolor: "purple",
+                                width: "75%",
                             }}
                         >
                             <Typography
@@ -107,28 +126,37 @@ const RegisterPage = ({ isPortrait, register }) => {
                                 fontWeight="bold"
                                 sx={{ color: "#32c4a7" }}
                             >
-                                Register
+                                Sign Up
                             </Typography>
                         </Box>
                     </Box>
+                </Box>
+
+                <Box
+                    className="register-input-box"
+                    sx={{
+                        width: "100vw",
+                        height: "30vh",
+                        // bgcolor: "pink",
+                        display: "flex",
+                        alignItems: "center",
+                    }}
+                >
                     <Box
+                        className="register-input-center-box-1"
                         sx={{
                             width: "100%",
-                            height: isPortrait ? "30%" : "50%",
+                            height: "100%",
+                            // bgcolor: "orange",
                             display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "space-evenly",
-                            alignItems: "center",
+                            justifyContent: "center",
                         }}
                     >
                         <Box
+                            className="register-input-center-box-2"
                             sx={{
-                                width: "80%",
-                                height: "100%",
-                                justifyContent: "space-evenly",
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems: "center",
+                                // bgcolor: "purple",
+                                width: "75%",
                             }}
                         >
                             <RegisterInputs
@@ -141,74 +169,91 @@ const RegisterPage = ({ isPortrait, register }) => {
                             />
                         </Box>
                     </Box>
+                </Box>
+
+                <Box
+                    className="register-submit-box"
+                    sx={{
+                        width: "100vw",
+                        height: "10vh",
+                        // bgcolor: "red",
+                        display: "flex",
+                        // justifyContent: "center",
+                        // alignItems: "center",
+                    }}
+                >
                     <Box
+                        className="register-submit-center-box-1"
                         sx={{
                             width: "100%",
-                            height: "25%",
-                            justifyContent: "space-evenly",
+                            // bgcolor: "orange",
                             display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
+                            justifyContent: "center",
                         }}
                     >
                         <Box
+                            className="submit-title-center-box-2"
                             sx={{
-                                width: "80%",
-                                height: "100%",
-                                justifyContent: "space-evenly",
+                                // bgcolor: "purple",
+                                width: "75%",
                                 display: "flex",
-                                flexDirection: "row",
+                                alignItems: "center",
                             }}
                         >
-                            <Box
+                            <Button
                                 sx={{
-                                    width: "90%",
-                                    height: "100%",
+                                    bgcolor: "#32c4a7",
+                                    width: isPortrait ? "90%" : "25%",
+                                    height: "75%",
+                                    color: "white",
+                                    borderRadius: "10px",
+                                    "&:hover": {
+                                        bgcolor: "#228572",
+                                    },
+                                    justifyContent: "center",
                                 }}
+                                onClick={handleSubmit}
                             >
-                                <Box
-                                    sx={{
-                                        width: "100%",
-                                        height: "10%",
-                                    }}
-                                ></Box>
-                                <Box
-                                    sx={{
-                                        width: "100%",
-                                        height: "40%",
-                                        display: "flex",
-                                        flexDirection: "column",
-                                    }}
-                                >
-                                    <Button
-                                        sx={{
-                                            bgcolor: "#32c4a7",
-                                            width: isPortrait ? "75%" : "20%",
-                                            height: "75%",
-                                            color: "white",
-                                            borderRadius: "10px",
-                                            "&:hover": {
-                                                bgcolor: "#228572",
-                                            },
-                                        }}
-                                        onClick={handleSubmit}
-                                    >
-                                        <Typography textTransform="none">
-                                            Sign Up
-                                        </Typography>
-                                    </Button>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        width: "100%",
-                                        height: "10%",
-                                    }}
-                                >
-                                    <Link to="/login">
-                                        Already Have an account? Login
-                                    </Link>
-                                </Box>
-                            </Box>
+                                <Typography textTransform="none">
+                                    Sign Up
+                                </Typography>{" "}
+                                <PersonAddAltIcon />
+                            </Button>
+                        </Box>
+                    </Box>
+                </Box>
+
+                <Box
+                    className="register-title-box"
+                    sx={{
+                        width: "100vw",
+                        // height: "12vh",
+                        height: isPortrait ? "12vh" : "15vh",
+                        // bgcolor: "blue",
+                        display: "flex",
+                        // alignItems: "center",
+                    }}
+                >
+                    <Box
+                        className="register-title-center-box-1"
+                        sx={{
+                            width: "100%",
+                            // bgcolor: "orange",
+                            display: "flex",
+                            justifyContent: "center",
+                            marginBottom: 0,
+                        }}
+                    >
+                        <Box
+                            className="register-title-center-box-2"
+                            sx={{
+                                // bgcolor: "purple",
+                                width: "75%",
+                            }}
+                        >
+                            <Link to="/login">
+                                Already Have an account? Login
+                            </Link>
                         </Box>
                     </Box>
                 </Box>

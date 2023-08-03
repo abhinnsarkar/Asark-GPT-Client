@@ -5,8 +5,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 export const WelcomePage = ({ isLaptop, isPortrait }) => {
     const navigate = useNavigate();
-    console.log("getting thw welcome page");
-    console.log("portrait ? ", isPortrait);
+    // console.log("getting thw welcome page");
+    // console.log("portrait ? ", isPortrait);
 
     if (localStorage.token) {
         return <Navigate to="/home" />;

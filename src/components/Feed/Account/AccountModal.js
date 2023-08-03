@@ -129,6 +129,11 @@ const AccountModal = ({ isPortrait, open, handleClose, deleteAccount }) => {
                                         color: "white",
                                         alignItems: "center",
                                         justifyItems: "center",
+                                        overflow: "auto",
+                                        display: "-webkit-box",
+                                        color: "white",
+                                        "-webkit-line-clamp": 3,
+                                        "-webkit-box-orient": "horizontal",
                                     }}
                                 >
                                     <Typography
@@ -149,6 +154,11 @@ const AccountModal = ({ isPortrait, open, handleClose, deleteAccount }) => {
                                         color: "white",
                                         alignItems: "center",
                                         justifyItems: "center",
+                                        overflow: "auto",
+                                        display: "-webkit-box",
+                                        color: "white",
+                                        "-webkit-line-clamp": 3,
+                                        "-webkit-box-orient": "horizontal",
                                     }}
                                 >
                                     <Typography

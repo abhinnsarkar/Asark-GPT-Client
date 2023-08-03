@@ -42,6 +42,9 @@ export const register = (user, navigate) => {
             localStorage.setItem("user", JSON.stringify(user));
 
             dispatch(setUser({ user, token }));
+            dispatch(
+                openAlertMessage("Successfully made an account", "success")
+            );
             setAuthToken();
             console.log("pushing to home from register");
             navigate("/home");
@@ -63,7 +66,7 @@ export const login = (user, navigate) => {
             console.log("error");
             console.log(response);
         } else {
-            console.log("registered");
+            console.log("logged in");
             const user = response.data.user;
             const token = response.data.token;
             console.log("user :", user);
@@ -72,10 +75,10 @@ export const login = (user, navigate) => {
             localStorage.setItem("user", JSON.stringify(user));
 
             dispatch(setUser({ user, token }));
+            dispatch(openAlertMessage("Successfully logged in", "success"));
+
             setAuthToken();
             console.log("pushing to home from login");
-
-            dispatch(openAlertMessage("Successfully Logged-In", "success"));
 
             navigate("/home");
         }

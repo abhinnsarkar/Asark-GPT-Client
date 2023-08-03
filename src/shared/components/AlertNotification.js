@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import { connect } from "react-redux";
 import { getActions } from "../../store/actions/alertActions";
+import store from "../../store/store";
 
 const AlertNotification = ({
     showAlertMessage,
@@ -15,7 +16,7 @@ const AlertNotification = ({
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
             open={showAlertMessage}
             onClose={closeAlertMessage}
-            autoHideDuration={5000}
+            autoHideDuration={3000}
         >
             <Alert severity={alertSeverity}>{alertMessageContent}</Alert>
         </Snackbar>

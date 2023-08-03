@@ -8,17 +8,18 @@ const initState = {
 const reducer = (state = initState, action) => {
     switch (action.type) {
         case alertActions.OPEN_ALERT_MESSAGE:
-            console.log("alert message : ", action.content);
             return {
                 ...state,
                 showAlertMessage: true,
                 alertMessageContent: action.content,
+                severity: action.severity,
             };
         case alertActions.CLOSE_ALERT_MESSAGE:
             return {
                 ...state,
                 showAlertMessage: false,
                 alertMessageContent: null,
+                severity: null,
             };
         default:
             return state;

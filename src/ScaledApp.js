@@ -19,8 +19,16 @@ const ScaledApp = () => {
     const [isPortrait, setIsPortrait] = useState(
         window.innerHeight > window.innerWidth
     );
-
+    var alertMessageContent, showAlertMessage, alertSeverity, closeAlertMessage;
     useEffect(() => {
+        // alertMessageContent = store.getState().alertReducer.alertMessageContent;
+        // showAlertMessage = store.getState().alertReducer.showAlertMessage;
+        // alertSeverity = store.getState().alertReducer.severity;
+
+        // closeAlertMessage = () => {
+        //     store.getState().alertReducer.alertMessageContent = null;
+        //     store.getState().alertReducer.showAlertMessage = false;
+        // };
         const handleOrientationChange = () => {
             setIsPortrait(window.innerHeight > window.innerWidth);
         };
@@ -104,7 +112,12 @@ const ScaledApp = () => {
                         />
                     </Routes>
                 </Router>
-                <AlertNotification />
+                {/* <AlertNotification
+                    alertMessageContent={alertMessageContent}
+                    alertSeverity={alertSeverity}
+                    showAlertMessage={showAlertMessage}
+                    closeAlertMessage={closeAlertMessage}
+                /> */}
             </Provider>
         </>
     );

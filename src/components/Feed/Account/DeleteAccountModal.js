@@ -20,6 +20,7 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const DeleteAccountModal = ({
+    isLaptop,
     isPortrait,
     open,
     handleClose,
@@ -48,8 +49,8 @@ const DeleteAccountModal = ({
                     left: "50%",
                     transform: "translate(-50%, -50%)",
                     // width: "75vw",
-                    width: isPortrait ? "95vw" : "75vw",
-                    height: isPortrait ? "95vh" : "75vh",
+                    width: isPortrait || !isLaptop ? "95vw" : "75vw",
+                    height: isPortrait || !isLaptop ? "95vh" : "75vh",
                     // height: "75vh",
                     bgcolor: "#202123",
                     border: "2px solid #32c4a7",

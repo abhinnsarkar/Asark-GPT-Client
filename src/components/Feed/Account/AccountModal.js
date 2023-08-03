@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
         aspectRatio: "1 / 1",
     },
 }));
-const AccountModal = ({ isPortrait, open, handleClose }) => {
+const AccountModal = ({ isLaptop, isPortrait, open, handleClose }) => {
     const classes = useStyles();
 
     let user;
@@ -42,8 +42,8 @@ const AccountModal = ({ isPortrait, open, handleClose }) => {
                     top: "50%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",
-                    width: isPortrait ? "95vw" : "75vw",
-                    height: isPortrait ? "95vh" : "75vh",
+                    width: isPortrait || !isLaptop ? "95vw" : "75vw",
+                    height: isPortrait || !isLaptop ? "95vh" : "75vh",
                     bgcolor: "#202123",
                     border: "2px solid #32c4a7",
                     borderRadius: "15px",
@@ -69,7 +69,7 @@ const AccountModal = ({ isPortrait, open, handleClose }) => {
                     <Box
                         className="box-main"
                         sx={{
-                            width: isPortrait ? "100%" : "50%",
+                            width: isPortrait || !isLaptop ? "100%" : "50%",
                             marginTop: "1%",
                             height: "99%",
                             bgcolor: "#202123",
@@ -98,22 +98,32 @@ const AccountModal = ({ isPortrait, open, handleClose }) => {
                                 overflow: "hidden",
                             }}
                         >
-                            <Box
-                                className={classes.customBox}
-                                sx={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                }}
-                            >
-                                <Avatar username={name} />
-                            </Box>
+                            {!isLaptop && !isPortrait ? (
+                                <></>
+                            ) : (
+                                <Box
+                                    className={classes.customBox}
+                                    sx={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        // bgcolor: "red",
+                                    }}
+                                >
+                                    <Avatar username={name} />
+                                </Box>
+                            )}
 
                             <Box
                                 className="box-user-info"
                                 sx={{
                                     width: "100%",
-                                    height: "20%",
+                                    // bgcolor: "blue",
+                                    // height: "20%",
+                                    height:
+                                        !isLaptop && !isPortrait
+                                            ? "35%"
+                                            : "20%",
                                     display: "flex",
                                     alignItems: "flex-start",
                                     flexDirection: "column",
@@ -122,6 +132,7 @@ const AccountModal = ({ isPortrait, open, handleClose }) => {
                                 <Box
                                     className="box-user-info-name"
                                     sx={{
+                                        // bgcolor: "red",
                                         display: "flex",
                                         width: "100%",
                                         height: "50%",
@@ -174,7 +185,12 @@ const AccountModal = ({ isPortrait, open, handleClose }) => {
                             <Box
                                 className="box-buttons"
                                 sx={{
-                                    height: "25%",
+                                    // bgcolor: "red",
+                                    // height: "25%",
+                                    height:
+                                        !isLaptop && !isPortrait
+                                            ? "50%"
+                                            : "25%",
                                     width: "100%",
                                     display: "flex",
                                     alignItems: "center",
@@ -192,8 +208,14 @@ const AccountModal = ({ isPortrait, open, handleClose }) => {
                                         justifyContent: "space-evenly",
                                     }}
                                 >
-                                    <Logout />
-                                    <DeleteAccount isPortrait={isPortrait} />
+                                    <Logout
+                                        isLaptop={isLaptop}
+                                        isPortrait={isPortrait}
+                                    />
+                                    <DeleteAccount
+                                        isLaptop={isLaptop}
+                                        isPortrait={isPortrait}
+                                    />
                                 </Box>
                             </Box>
                         </Box>

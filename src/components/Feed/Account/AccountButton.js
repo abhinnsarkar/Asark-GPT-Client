@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Typography } from "@mui/material";
 
-export const AccountButton = ({ title, fn, icon, isPortrait }) => {
+export const AccountButton = ({ title, fn, icon, isLaptop, isPortrait }) => {
     return (
         <Button
             variant="contained"
@@ -9,7 +9,8 @@ export const AccountButton = ({ title, fn, icon, isPortrait }) => {
             sx={{
                 bgcolor: "#202123",
                 textAlign: "center",
-                height: "25%",
+                // height: "25%",
+                height: !isLaptop && !isPortrait ? "50%" : "25%",
                 color: "white",
                 border: "2px solid red",
                 borderRadius: "10px",
@@ -17,7 +18,8 @@ export const AccountButton = ({ title, fn, icon, isPortrait }) => {
                 "&:hover": {
                     bgcolor: "#202123",
                     width: "100%",
-                    height: "27%",
+                    // height: "27%",
+                    height: !isLaptop && !isPortrait ? "52%" : "27%",
                 },
                 marginTop: "10px",
             }}

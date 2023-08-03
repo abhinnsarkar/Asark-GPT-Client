@@ -4,13 +4,54 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AccountModal from "./Account/AccountModal";
 
 export const Header = ({ isLaptop, isPortrait }) => {
+    const [disabled, setDisabled] = React.useState();
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const decideDisabled = () => {
+        // console.log(
+        //     "is Portrait is ",
+        //     isPortrait,
+        //     " so button is disbaled? : ",
+        //     !isPortrait
+        // );
+        // console.log(
+        //     "is Laptop is ",
+        //     isLaptop,
+        //     " so button is disbaled? : ",
+        //     isLaptop
+        // );
+    };
     useEffect(() => {
-        if (!isPortrait && open) {
+        const condition1 = !isLaptop && !isPortrait;
+        const condition2 = !isLaptop && isPortrait;
+        const condition3 = isLaptop && !isPortrait;
+        if ((condition1 || condition2) && open) {
+        } else {
             handleClose();
         }
+        // if ((!isPortrait || isLaptop) && open) {
+        //     handleClose();
+        // }
+        if (condition1 || condition2) {
+            setDisabled(false);
+        }
+        if (condition3) {
+            setDisabled(true);
+        }
+
+        // console.log(
+        //     "is Portrait is ",
+        //     isPortrait,
+        //     " so button is disbaled? : ",
+        //     !isPortrait
+        // );
+        // console.log(
+        //     "is Laptop is ",
+        //     isLaptop,
+        //     " so button is disbaled? : ",
+        //     isLaptop
+        // );
     });
     return (
         <>
@@ -24,8 +65,9 @@ export const Header = ({ isLaptop, isPortrait }) => {
             >
                 <Box
                     sx={{
-                        width: isPortrait ? "10%" : "40%",
+                        width: isPortrait || !isLaptop ? "10%" : "40%",
                         height: "100%",
+                        // bgcolor: "red",
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
@@ -58,10 +100,10 @@ export const Header = ({ isLaptop, isPortrait }) => {
                             textOverflow: "ellipsis",
                             overflow: "hidden",
                         }}
-                        disabled={!isPortrait}
+                        disabled={disabled}
                         onClick={handleOpen}
                     >
-                        {isPortrait ? (
+                        {isPortrait || !isLaptop ? (
                             <></>
                         ) : (
                             <>
@@ -76,7 +118,7 @@ export const Header = ({ isLaptop, isPortrait }) => {
 
                 <Box
                     sx={{
-                        width: isPortrait ? "90%" : "60%",
+                        width: isPortrait || !isLaptop ? "90%" : "60%",
                         height: "100%",
                         display: "flex",
                         justifyContent: "center",

@@ -2,7 +2,7 @@ import { Box, IconButton, Modal, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import React from "react";
 
-const AnswerModal = ({ isPortrait, open, handleClose, user, ai }) => {
+const AnswerModal = ({ isLaptop, isPortrait, open, handleClose, user, ai }) => {
     return (
         <Modal open={open} onClose={handleClose}>
             <Box
@@ -12,8 +12,8 @@ const AnswerModal = ({ isPortrait, open, handleClose, user, ai }) => {
                     top: "50%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",
-                    width: isPortrait ? "95vw" : "75vw",
-                    height: isPortrait ? "95vh" : "75vh",
+                    width: isPortrait || !isLaptop ? "95vw" : "75vw",
+                    height: isPortrait || !isLaptop ? "95vh" : "75vh",
                     bgcolor: "#202123",
                     border: "5px solid #32c4a7",
                     borderRadius: "15px",

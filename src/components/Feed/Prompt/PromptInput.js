@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { sendPrompt, getActions } from "../../../store/actions/promptActions";
 import AnswerModal from "./AnswerModal";
 
-export const PromptInput = ({ isPortrait, sendPrompt }) => {
+export const PromptInput = ({ isLaptop, isPortrait, sendPrompt }) => {
     const [answerOpen, setAnswerOpen] = React.useState(false);
     const handleOpenAnswer = () => setAnswerOpen(true);
     const handleCloseAnswer = () => setAnswerOpen(false);
@@ -115,6 +115,7 @@ export const PromptInput = ({ isPortrait, sendPrompt }) => {
                 }}
             />
             <AnswerModal
+                isLaptop={isLaptop}
                 isPortrait={isPortrait}
                 open={answerOpen}
                 handleClose={closeModal}

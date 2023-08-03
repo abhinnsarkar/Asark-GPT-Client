@@ -6,7 +6,7 @@ import { HistoryItem } from "./HistoryItem";
 import { getMessages, getActions } from "../../../store/actions/promptActions";
 import { connect } from "react-redux";
 
-const History = ({ isPortrait, getMessages }) => {
+const History = ({ isLaptop, isPortrait, getMessages }) => {
     const [msgsLoading, setMsgsLoading] = useState(true);
     const [prevMsgs, setPrevMsgs] = useState([]);
 
@@ -53,10 +53,12 @@ const History = ({ isPortrait, getMessages }) => {
             <Box
                 sx={{
                     width: "100%",
-                    height: "10%",
+                    // height: "10%",
+                    height: !isLaptop ? "15%" : "10%",
                     display: "flex",
                     alignContent: "center",
                     justifyContent: "space-between",
+                    // bgcolor: "blue",
                 }}
             >
                 <Box
@@ -65,22 +67,35 @@ const History = ({ isPortrait, getMessages }) => {
                         display: "flex",
                         alignContent: "center",
                         textAlign: "center",
+                        // bgcolor: "red",
                     }}
                 >
                     <Typography
                         sx={{
-                            marginTop: "3%",
+                            // marginTop: "3%",
+                            marginTop: !isLaptop ? "0%" : "3%",
                             marginLeft: "2%",
                         }}
-                        variant={isPortrait ? "h5" : "h4"}
+                        variant={isPortrait || !isLaptop ? "h5" : "h4"}
                     >
                         Refresh previous chats
                     </Typography>
                 </Box>
-                <IconButton onClick={refresh}>
-                    <RefreshIcon fontSize="large" />
-                </IconButton>
+
+                <Box
+                    sx={{
+                        display: "flex",
+                        // flexDirection:'folumn',
+                        height: "100%",
+                        // bgcolor: "red",
+                    }}
+                >
+                    <IconButton onClick={refresh}>
+                        <RefreshIcon fontSize="large" />
+                    </IconButton>
+                </Box>
             </Box>
+            {!isLaptop ? <br></br> : <></>}
             <Box
                 sx={{
                     width: "100%",

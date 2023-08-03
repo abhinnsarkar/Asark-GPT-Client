@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 import setAuthToken from "./shared/utils/setAuthToken";
 
 const ScaledApp = () => {
-    const [isLaptop, setIsLaptop] = useState();
+    const [isLaptop, setIsLaptop] = useState(window.innerWidth > 1000);
     const [isPortrait, setIsPortrait] = useState(
         window.innerHeight > window.innerWidth
     );
@@ -27,16 +27,18 @@ const ScaledApp = () => {
 
         window.addEventListener("resize", handleOrientationChange);
 
-        if (window.innerWidth > 1000) {
-            setIsLaptop(true);
-            // console.log(isLaptop);
-        } else {
-            setIsLaptop(false);
-            if (!isPortrait) {
-            }
-        }
+        // if (window.innerWidth > 1000) {
+        //     setIsLaptop(true);
+        //     console.log("isLaptop", isLaptop);
+        // } else {
+        //     console.log("isLaptop", isLaptop);
+        //     setIsLaptop(false);
+        //     if (!isPortrait) {
+        //     }
+        // }
 
         //
+        setIsLaptop(window.innerWidth > 1000);
         setIsPortrait(window.innerWidth < window.innerHeight);
 
         if (localStorage.token) {
@@ -47,6 +49,8 @@ const ScaledApp = () => {
             window.removeEventListener("resize", handleOrientationChange);
         };
     }, [isLaptop, isPortrait]);
+    console.log("isLaptop", isLaptop);
+    console.log("isPortrait", isPortrait);
 
     return (
         <>

@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import React from "react";
 import PromptInput from "../Feed/Prompt/PromptInput";
 
-export const Footer = ({ isPortrait }) => {
+export const Footer = ({ isLaptop, isPortrait }) => {
     return (
         <Box
             sx={{
@@ -14,7 +14,7 @@ export const Footer = ({ isPortrait }) => {
                 color: "red",
             }}
         >
-            <PromptInput isPortrait={isPortrait} />
+            <PromptInput isLaptop={isLaptop} isPortrait={isPortrait} />
         </Box>
     );
 };

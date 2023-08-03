@@ -6,7 +6,7 @@ import LoginInputs from "./LoginInputs";
 import { connect } from "react-redux";
 import { getActions } from "../../../store/actions/authActions";
 
-const LoginPage = ({ isPortrait, login }) => {
+const LoginPage = ({ isLaptop, isPortrait, login }) => {
     const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
@@ -70,7 +70,7 @@ const LoginPage = ({ isPortrait, login }) => {
                                 className="login-header-button"
                                 sx={{
                                     bgcolor: "#32c4a7",
-                                    width: isPortrait ? "90%" : "25%",
+                                    width: isPortrait ? "90%" : "35%",
                                     height: "75%",
                                     color: "white",
                                     borderRadius: "10px",
@@ -121,7 +121,7 @@ const LoginPage = ({ isPortrait, login }) => {
                             }}
                         >
                             <Typography
-                                variant={isPortrait ? "h2" : "h1"}
+                                variant={isPortrait || !isLaptop ? "h3" : "h1"}
                                 fontWeight="bold"
                                 sx={{ color: "#32c4a7" }}
                             >
@@ -200,7 +200,7 @@ const LoginPage = ({ isPortrait, login }) => {
                             <Button
                                 sx={{
                                     bgcolor: "#32c4a7",
-                                    width: isPortrait ? "90%" : "25%",
+                                    width: isPortrait ? "90%" : "35%",
                                     height: "75%",
                                     color: "white",
                                     borderRadius: "10px",

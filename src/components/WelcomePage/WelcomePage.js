@@ -23,8 +23,9 @@ export const WelcomePage = ({ isLaptop, isPortrait }) => {
                     <div className="buttons">
                         <Box
                             sx={{
-                                width: isPortrait ? "100vw" : "25vw",
+                                width: isPortrait ? "100vw" : "40vw",
                                 height: "10vh",
+                                // bgcolor: "red",
                                 display: "flex",
                                 justifyContent: "space-evenly",
                                 alignItems: "center",
@@ -36,8 +37,9 @@ export const WelcomePage = ({ isLaptop, isPortrait }) => {
                                     "&:hover": {
                                         bgcolor: "#228572",
                                     },
+                                    // width: isLaptop ? "40%" : "90%",
                                     width: "40%",
-                                    height: "4vh",
+                                    height: isLaptop ? "4vh" : "12vh",
                                     color: "white",
                                     borderRadius: "10px",
                                 }}
@@ -56,7 +58,8 @@ export const WelcomePage = ({ isLaptop, isPortrait }) => {
                                         bgcolor: "#228572",
                                     },
                                     width: "40%",
-                                    height: "4vh",
+                                    // width: isLaptop ? "40%" : "90%",
+                                    height: isLaptop ? "4vh" : "12vh",
                                     color: "white",
                                     borderRadius: "10px",
                                 }}

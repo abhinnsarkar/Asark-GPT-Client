@@ -44,7 +44,7 @@ export const Middle = ({ isLaptop, isPortrait }) => {
                     flexDirection: "row",
                 }}
             >
-                {isPortrait ? (
+                {isPortrait || !isLaptop ? (
                     <></>
                 ) : (
                     <>
@@ -185,7 +185,7 @@ export const Middle = ({ isLaptop, isPortrait }) => {
 
                 <Box
                     sx={{
-                        width: isPortrait ? "100%" : "60%",
+                        width: isPortrait || !isLaptop ? "100%" : "60%",
                         height: "100%",
                     }}
                 >
@@ -196,11 +196,12 @@ export const Middle = ({ isLaptop, isPortrait }) => {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            height: "88%",
+                            // height: "88%",
+                            height: isPortrait || !isLaptop ? "75%" : "88%",
                             paddingTop: "1vh",
                         }}
                     >
-                        <History isPortrait={isPortrait} />
+                        <History isLaptop={isLaptop} isPortrait={isPortrait} />
                     </Box>
                     <Box
                         className="prompt"
@@ -213,7 +214,7 @@ export const Middle = ({ isLaptop, isPortrait }) => {
                             paddingTop: "1vh",
                         }}
                     >
-                        <Footer isPortrait={isPortrait} />
+                        <Footer isLaptop={isLaptop} isPortrait={isPortrait} />
                     </Box>
                 </Box>
             </Box>

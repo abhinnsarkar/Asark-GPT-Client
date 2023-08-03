@@ -7,7 +7,7 @@ import RegisterInputs from "./RegisterInputs";
 import { connect } from "react-redux";
 import { getActions } from "../../../store/actions/authActions";
 
-const RegisterPage = ({ isPortrait, register }) => {
+const RegisterPage = ({ isLaptop, isPortrait, register }) => {
     const navigate = useNavigate();
 
     const [name, setName] = useState("");
@@ -71,7 +71,7 @@ const RegisterPage = ({ isPortrait, register }) => {
                                 className="register-header-button"
                                 sx={{
                                     bgcolor: "#32c4a7",
-                                    width: isPortrait ? "90%" : "25%",
+                                    width: isPortrait ? "90%" : "35%",
                                     height: "75%",
                                     color: "white",
                                     borderRadius: "10px",
@@ -122,7 +122,7 @@ const RegisterPage = ({ isPortrait, register }) => {
                             }}
                         >
                             <Typography
-                                variant={isPortrait ? "h2" : "h1"}
+                                variant={isPortrait || !isLaptop ? "h3" : "h1"}
                                 fontWeight="bold"
                                 sx={{ color: "#32c4a7" }}
                             >
@@ -203,7 +203,7 @@ const RegisterPage = ({ isPortrait, register }) => {
                             <Button
                                 sx={{
                                     bgcolor: "#32c4a7",
-                                    width: isPortrait ? "90%" : "25%",
+                                    width: isPortrait ? "90%" : "35%",
                                     height: "75%",
                                     color: "white",
                                     borderRadius: "10px",

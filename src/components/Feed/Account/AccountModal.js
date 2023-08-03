@@ -1,6 +1,5 @@
 import CloseIcon from "@mui/icons-material/Close";
 import { Box, Modal, Typography, IconButton } from "@mui/material";
-import { deleteAccount, getActions } from "../../../store/actions/authActions";
 import React from "react";
 import { connect } from "react-redux";
 import { makeStyles } from "@mui/styles";
@@ -15,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
         aspectRatio: "1 / 1",
     },
 }));
-const AccountModal = ({ isPortrait, open, handleClose, deleteAccount }) => {
+const AccountModal = ({ isPortrait, open, handleClose }) => {
     const classes = useStyles();
 
     let user;
@@ -205,11 +204,4 @@ const AccountModal = ({ isPortrait, open, handleClose, deleteAccount }) => {
     );
 };
 
-const mapActionsToProps = (dispatch) => {
-    return {
-        deleteAccount,
-        ...getActions(dispatch),
-    };
-};
-
-export default connect(null, mapActionsToProps)(AccountModal);
+export default AccountModal;

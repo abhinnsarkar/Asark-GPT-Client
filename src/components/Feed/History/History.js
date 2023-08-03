@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { Box, IconButton, Typography } from "@mui/material";
 import { HistoryItem } from "./HistoryItem";
-import { getActions } from "../../../store/actions/authActions";
+import { getMessages, getActions } from "../../../store/actions/promptActions";
 import { connect } from "react-redux";
 
 const History = ({ isPortrait, getMessages }) => {
@@ -107,6 +107,7 @@ const History = ({ isPortrait, getMessages }) => {
 
 const mapActionsToProps = (dispatch) => {
     return {
+        getMessages,
         ...getActions(dispatch),
     };
 };

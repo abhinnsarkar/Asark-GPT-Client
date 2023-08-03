@@ -11,7 +11,10 @@ import {
     Button,
     IconButton,
 } from "@mui/material";
-import { deleteAccount, getActions } from "../../../store/actions/authActions";
+import {
+    deleteAccount,
+    getActions,
+} from "../../../store/actions/accountActions";
 import React from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import SendIcon from "@mui/icons-material/Send";
 
 import { connect } from "react-redux";
-import { getActions } from "../../../store/actions/authActions";
+import { sendPrompt, getActions } from "../../../store/actions/promptActions";
 import AnswerModal from "./AnswerModal";
 
 export const PromptInput = ({ isPortrait, sendPrompt }) => {
@@ -127,6 +127,7 @@ export const PromptInput = ({ isPortrait, sendPrompt }) => {
 };
 const mapActionsToProps = (dispatch) => {
     return {
+        sendPrompt,
         ...getActions(dispatch),
     };
 };

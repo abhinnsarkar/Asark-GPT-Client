@@ -1,6 +1,5 @@
 import * as api from "../../api";
 import setAuthToken from "../../shared/utils/setAuthToken";
-import { logout } from "../../shared/utils/logout";
 
 import { openAlertMessage } from "./alertActions";
 
@@ -12,9 +11,6 @@ export const getActions = (dispatch) => {
     return {
         login: (user, navigate) => dispatch(login(user, navigate)),
         register: (user, navigate) => dispatch(register(user, navigate)),
-        deleteAccount: (navigate) => dispatch(deleteAccount(navigate)),
-        sendPrompt: (promptValue) => dispatch(sendPrompt(promptValue)),
-        getMessages: () => dispatch(getMessages()),
         setUser: ({ user, token }) => dispatch(setUser({ user, token })),
     };
 };
@@ -83,55 +79,5 @@ export const login = (user, navigate) => {
 
             navigate("/home");
         }
-    };
-};
-
-export const deleteAccount = (navigate) => {
-    console.log(`Delete Account action received`);
-    return async (dispatch) => {
-        console.log(`Delete Account action received`);
-
-        const response = await api.deleteAccount();
-        console.log(response);
-
-        if (response.error) {
-            dispatch(
-                openAlertMessage(response?.exception?.response?.data, "error")
-            );
-            console.log("error");
-            console.log(response);
-        } else {
-            logout();
-            dispatch(
-                openAlertMessage("Successfully Deleted Account", "success")
-            );
-            navigate("/welcome");
-        }
-    };
-};
-
-export const sendPrompt = (promptValue) => {
-    // return async (dispatch) => {
-    return async () => {
-        const options = {
-            method: "POST",
-            body: JSON.stringify({
-                promptValue,
-            }),
-
-            headers: {
-                "Content-Type": "application/json",
-                "x-auth-token": JSON.parse(localStorage.getItem("token")),
-            },
-        };
-
-        return await api.sendPrompt(options);
-    };
-};
-
-export const getMessages = () => {
-    console.log("in the api actions for get msg");
-    return async (dispatch) => {
-        return await api.getMessages();
     };
 };

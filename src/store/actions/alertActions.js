@@ -5,8 +5,7 @@ const alertActions = {
 
 export const getActions = (dispatch) => {
     return {
-        openAlertMessage: (content, severity) =>
-            dispatch(openAlertMessage(content, severity)),
+        openAlertMessage: (content) => dispatch(openAlertMessage(content)),
         closeAlertMessage: () => dispatch(closeAlertMessage()),
     };
 };

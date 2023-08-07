@@ -1,24 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { getActions } from "../../store/actions/alertActions";
-import store from "../../store/store";
 
-const AlertNotification = ({
-    showAlertMessage,
-    closeAlertMessage,
-    alertMessageContent,
-    alertSeverity,
-}) => {
+const AlertNotification = ({ closeAlertMessage }) => {
+    const alert = useSelector((state) => state.alertReducer.alert);
+    // console.log(
+    //     "______________________________________________________________"
+    // );
+    // console.log("alert from compoentn is ", alert);
+    // console.log(
+    //     "______________________________________________________________"
+    // );
+
     return (
         <Snackbar
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-            open={showAlertMessage}
+            open={alert.showAlertMessage}
             onClose={closeAlertMessage}
             autoHideDuration={3000}
         >
-            <Alert severity={alertSeverity}>{alertMessageContent}</Alert>
+            <Alert severity={alert.alertSeverity} variant="filled">
+                {alert.alertMessageContent}
+            </Alert>
         </Snackbar>
     );
 };

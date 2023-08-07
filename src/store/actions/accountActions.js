@@ -18,16 +18,12 @@ export const deleteAccount = (navigate) => {
         console.log(response);
 
         if (response.error) {
-            dispatch(
-                openAlertMessage(response?.exception?.response?.data, "error")
-            );
+            dispatch(openAlertMessage(response?.exception?.response?.data, "danger"));
             console.log("error");
             console.log(response);
         } else {
             logout();
-            dispatch(
-                openAlertMessage("Successfully Deleted Account", "success")
-            );
+            dispatch(openAlertMessage("Successfully Deleted Account", "success"));
             navigate("/welcome");
         }
     };

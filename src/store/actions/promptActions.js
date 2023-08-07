@@ -11,8 +11,8 @@ export const getActions = (dispatch) => {
 };
 
 export const sendPrompt = (promptValue) => {
-    // return async (dispatch) => {
-    return async () => {
+    return async (dispatch) => {
+        // return async () => {
         const options = {
             method: "POST",
             body: JSON.stringify({
@@ -26,6 +26,7 @@ export const sendPrompt = (promptValue) => {
             },
         };
 
+        dispatch(openAlertMessage(`Sending prompt ${promptValue}`, "info"));
         return await api.sendPrompt(options);
     };
 };

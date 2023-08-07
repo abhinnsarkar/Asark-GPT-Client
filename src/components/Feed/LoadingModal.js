@@ -2,6 +2,10 @@ import React from "react";
 import { Box, CircularProgress, Modal } from "@mui/material";
 
 export const LoadingModal = ({ isLaptop, isPortrait, open }) => {
+    const verticalPhone = !isLaptop && isPortrait;
+    const horizontalPhone = !isLaptop && !isPortrait;
+    const horizontalLaptop = isLaptop && !isPortrait;
+    // const horizontalLaptop = isLaptop && !isPortrait;
     return (
         <Modal open={open}>
             <Box
@@ -11,8 +15,19 @@ export const LoadingModal = ({ isLaptop, isPortrait, open }) => {
                     top: "50%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",
-                    width: isPortrait || !isLaptop ? "50vh" : "10vw",
-                    height: isPortrait || !isLaptop ? "50vh" : "10vw",
+                    width: verticalPhone
+                        ? "50vw"
+                        : horizontalPhone
+                        ? "50vh"
+                        : "10vw",
+                    height: verticalPhone
+                        ? "50vw"
+                        : horizontalPhone
+                        ? "50vh"
+                        : "10vw",
+
+                    // width: isPortrait || !isLaptop ? "50vh" : "10vw",
+                    // height: isPortrait || !isLaptop ? "50vh" : "10vw",
                     // height: isPortrait || !isLaptop ? "95vh" : "75vh",
                     // width: isPortrait ? "50vw" : "10vw",
                     // height: isPortrait ? "50vw" : "10vw",

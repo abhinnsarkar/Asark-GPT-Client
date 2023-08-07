@@ -1,3 +1,5 @@
+import "./App.css";
+
 import {
     BrowserRouter as Router,
     Route,
@@ -19,16 +21,8 @@ const ScaledApp = () => {
     const [isPortrait, setIsPortrait] = useState(
         window.innerHeight > window.innerWidth
     );
-    var alertMessageContent, showAlertMessage, alertSeverity, closeAlertMessage;
-    useEffect(() => {
-        // alertMessageContent = store.getState().alertReducer.alertMessageContent;
-        // showAlertMessage = store.getState().alertReducer.showAlertMessage;
-        // alertSeverity = store.getState().alertReducer.severity;
 
-        // closeAlertMessage = () => {
-        //     store.getState().alertReducer.alertMessageContent = null;
-        //     store.getState().alertReducer.showAlertMessage = false;
-        // };
+    useEffect(() => {
         const handleOrientationChange = () => {
             setIsPortrait(window.innerHeight > window.innerWidth);
         };
@@ -64,6 +58,8 @@ const ScaledApp = () => {
         <>
             <Provider store={store}>
                 <Router>
+                    {/* <section className="container"> */}
+
                     <Routes>
                         <Route
                             path="/"
@@ -111,13 +107,9 @@ const ScaledApp = () => {
                             }
                         />
                     </Routes>
+                    <AlertNotification />
+                    {/* </section> */}
                 </Router>
-                {/* <AlertNotification
-                    alertMessageContent={alertMessageContent}
-                    alertSeverity={alertSeverity}
-                    showAlertMessage={showAlertMessage}
-                    closeAlertMessage={closeAlertMessage}
-                /> */}
             </Provider>
         </>
     );

@@ -3,7 +3,7 @@ import axios from "axios";
 export const apiClient = axios.create({
     // baseURL: process.env.SERVER,
     baseURL: "https://asark-gpt-backend.onrender.com",
-    timeout: 5000,
+    timeout: 10000,
     headers: {
         "Content-Type": "application/json",
     },

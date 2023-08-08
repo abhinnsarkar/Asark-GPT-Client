@@ -21,6 +21,8 @@ const AccountModal = ({ isLaptop, isPortrait, open, handleClose }) => {
     let email;
     let name;
 
+    console.log("store state is", store.getState());
+
     if (typeof store.getState().authReducer === "object") {
         user = store.getState().authReducer.user;
         email = user.email;

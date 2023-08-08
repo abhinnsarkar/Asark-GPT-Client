@@ -9,12 +9,17 @@ import {
     ACCOUNT_DELETED,
 } from "../actions/types";
 
+// const initState = {
+//     user: JSON.parse(localStorage.getItem("user")),
+//     // token: JSON.parse(localStorage.getItem("token")),
+//     token: localStorage.getItem("token"),
+//     isAuthenticated: null,
+//     loading: false,
+// };
 const initState = {
-    user: JSON.parse(localStorage.getItem("user")),
-    // token: JSON.parse(localStorage.getItem("token")),
-    token: localStorage.getItem("token"),
+    user: null,
+    token: null,
     isAuthenticated: null,
-    loading: false,
 };
 
 const authReducer = (state = initState, action) => {

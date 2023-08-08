@@ -1,39 +1,31 @@
 import React from "react";
-import { styled } from "@mui/styles";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
-const AvatarPreview = styled("div")({
-    height: "95%",
-    width: "95%",
-    backgroundColor: "#32c4a7",
-    borderRadius: "50%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: "20px",
-    fontWeight: "700",
-    color: "white",
-});
-
-const Avatar = ({ username, large }) => {
-    const name = username.split("")[0] + username.split("")[1];
-    var fontSize;
-    if (large) {
-        fontSize = "30px";
-    } else {
-        fontSize = "4em";
-    }
+const Avatar = ({ isPopup, name }) => {
+    console.log("name is ", name);
     return (
-        <AvatarPreview style={large ? { height: "80px", width: "80px" } : {}}>
+        <Box
+            sx={{
+                bgcolor: "#32c4a7",
+                // width: "55vw",
+                width: isPopup ? "55vw" : "22vw",
+                height: isPopup ? "55vw" : "22vw",
+                // height: "55vw",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: "150px",
+            }}
+        >
             <Typography
                 sx={{
-                    fontSize: { fontSize },
+                    fontSize: "4em",
                     fontWeight: 700,
                 }}
             >
-                {name}
+                {name.split("")[0]}
             </Typography>
-        </AvatarPreview>
+        </Box>
     );
 };
 

@@ -1,7 +1,7 @@
 import CloseIcon from "@mui/icons-material/Close";
 import { Box, Modal, Typography, IconButton } from "@mui/material";
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { makeStyles } from "@mui/styles";
 import Avatar from "../../../shared/utils/Avatar";
 import store from "../../../store/store";
@@ -14,26 +14,19 @@ const useStyles = makeStyles((theme) => ({
         aspectRatio: "1 / 1",
     },
 }));
-const AccountModal = ({ isLaptop, isPortrait, open, handleClose }) => {
+const AccountModal = ({ isPopup, isLaptop, isPortrait, open, handleClose }) => {
     const classes = useStyles();
 
-    let user;
-    let email;
-    let name;
+    console.log("store state is", typeof store.getState());
 
-    console.log("store state is", store.getState());
+    // const user = store.getState().authReducer.user;
+    const user = useSelector((state) => state.authReducer.user);
+    const email = useSelector((state) => state.authReducer.user.email);
+    const usersname = useSelector((state) => state.authReducer.user.name);
+    // const email = store.getState().authReducer.user.email;
+    // const name = store.getState().authReducer.user.name;
 
-    if (typeof store.getState().authReducer === "object") {
-        user = store.getState().authReducer.user;
-        email = user.email;
-        name = user.name;
-    } else {
-        if (typeof store.getState().authReducer === "string") {
-            user = JSON.parse(store.getState().authReducer.user);
-            email = user.email;
-            name = user.name;
-        }
-    }
+    console.log("name is in accountmodal ", usersname);
 
     return (
         <Modal open={open} onClose={handleClose}>
@@ -44,8 +37,10 @@ const AccountModal = ({ isLaptop, isPortrait, open, handleClose }) => {
                     top: "50%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",
-                    width: isPortrait || !isLaptop ? "95vw" : "75vw",
-                    height: isPortrait || !isLaptop ? "95vh" : "75vh",
+                    width: isPortrait || !isLaptop ? "100vw" : "75vw",
+                    // width: isPortrait || !isLaptop ? "95vw" : "75vw",
+                    // height: isPortrait || !isLaptop ? "95vh" : "75vh",
+                    height: isPortrait || !isLaptop ? "100vh" : "75vh",
                     bgcolor: "#202123",
                     border: "2px solid #32c4a7",
                     borderRadius: "15px",
@@ -112,7 +107,10 @@ const AccountModal = ({ isLaptop, isPortrait, open, handleClose }) => {
                                         // bgcolor: "red",
                                     }}
                                 >
-                                    <Avatar username={name} />
+                                    <Avatar
+                                        isPopup={isPopup}
+                                        name={usersname}
+                                    />
                                 </Box>
                             )}
 
@@ -154,7 +152,7 @@ const AccountModal = ({ isLaptop, isPortrait, open, handleClose }) => {
                                         }}
                                         variant="h5"
                                     >
-                                        Name : {name}
+                                        Name : {usersname}
                                     </Typography>
                                 </Box>
                                 <Box

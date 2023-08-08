@@ -42,10 +42,16 @@ const Input = styled("input")({
 });
 
 export const CustomInput = (props) => {
-    const { value, setValue, placeholder, type } = props;
+    const { value, setValue, placeholder, type, handleSubmit } = props;
 
     const handleValueChange = (event) => {
         setValue(event.target.value);
+    };
+
+    const handleKeyDown = (event) => {
+        if (event.key === "Enter") {
+            handleSubmit();
+        }
     };
 
     return (
@@ -55,6 +61,7 @@ export const CustomInput = (props) => {
                 onChange={handleValueChange}
                 type={type}
                 placeholder={placeholder}
+                onKeyDown={handleKeyDown}
             />
         </Wrapper>
     );

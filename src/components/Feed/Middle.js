@@ -7,6 +7,7 @@ import { makeStyles } from "@mui/styles";
 import Avatar from "../../shared/utils/Avatar";
 import { Footer } from "./Footer";
 import History from "./History/History";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
     customBox: {
@@ -17,21 +18,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 export const Middle = ({ isLaptop, isPortrait }) => {
     const classes = useStyles();
-    let user;
-    let email;
-    let name;
 
-    if (typeof store.getState().authReducer === "object") {
-        user = store.getState().authReducer.user;
-        email = user.email;
-        name = user.name;
-    } else {
-        if (typeof store.getState().authReducer === "string") {
-            user = JSON.parse(store.getState().authReducer.user);
-            email = user.email;
-            name = user.name;
-        }
-    }
+    const user = useSelector((state) => state.authReducer.user);
+    const email = useSelector((state) => state.authReducer.user.email);
+    const usersname = useSelector((state) => state.authReducer.user.name);
+
     return (
         <React.Fragment>
             <CssBaseline />
@@ -97,7 +88,10 @@ export const Middle = ({ isLaptop, isPortrait }) => {
                                             justifyContent: "center",
                                         }}
                                     >
-                                        <Avatar username={name} />
+                                        <Avatar
+                                            isPopup={false}
+                                            name={usersname}
+                                        />
                                     </Box>
 
                                     <Box
@@ -127,7 +121,7 @@ export const Middle = ({ isLaptop, isPortrait }) => {
                                                 }}
                                                 variant="h5"
                                             >
-                                                Name : {name}
+                                                Name : {usersname}
                                             </Typography>
                                         </Box>
                                         <Box
@@ -187,6 +181,7 @@ export const Middle = ({ isLaptop, isPortrait }) => {
                     sx={{
                         width: isPortrait || !isLaptop ? "100%" : "60%",
                         height: "100%",
+                        // bgcolor: "red",
                     }}
                 >
                     <Box
@@ -197,7 +192,9 @@ export const Middle = ({ isLaptop, isPortrait }) => {
                             alignItems: "center",
                             justifyContent: "center",
                             // height: "88%",
-                            height: isPortrait || !isLaptop ? "75%" : "88%",
+                            height: !isPortrait && !isLaptop ? "75%" : "88%",
+                            // bgcolor: "red",
+                            // height: isPortrait || !isLaptop ? "75%" : "88%",
                             paddingTop: "1vh",
                         }}
                     >
@@ -211,7 +208,8 @@ export const Middle = ({ isLaptop, isPortrait }) => {
                             alignItems: "center",
                             justifyContent: "center",
                             height: "12%",
-                            paddingTop: "1vh",
+                            paddingTop:
+                                !isLaptop && !isPortrait ? "5vh" : "1vh",
                         }}
                     >
                         <Footer isLaptop={isLaptop} isPortrait={isPortrait} />

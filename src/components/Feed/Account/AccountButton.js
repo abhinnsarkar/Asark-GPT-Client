@@ -17,7 +17,7 @@ export const AccountButton = ({ title, fn, icon, isLaptop, isPortrait }) => {
                 width: isPortrait ? "100%" : "95%",
                 "&:hover": {
                     bgcolor: "#202123",
-                    width: "100%",
+                    width: "97%",
                     // height: "27%",
                     height: !isLaptop && !isPortrait ? "52%" : "27%",
                 },

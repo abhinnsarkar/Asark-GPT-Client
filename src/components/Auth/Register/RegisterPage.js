@@ -1,12 +1,13 @@
-import { Box, Button, CssBaseline, Typography } from "@mui/material";
-import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import React, { useEffect, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import RegisterInputs from "./RegisterInputs";
+import { Box, CssBaseline } from "@mui/material";
+import React, { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { getActions } from "../../../store/actions/authActions";
 import { LoadingModal } from "../../Feed/LoadingModal";
+import RegisterHeader from "./RegisterHeader";
+import RegisterMiddle from "./RegisterMiddle";
+import RegisterFooter from "./RegisterFooter";
+import useGetIsLoggedIn from "../../../shared/utils/useGetIsLoggedIn";
 
 const RegisterPage = ({ isLaptop, isPortrait, register }) => {
     const navigate = useNavigate();
@@ -24,9 +25,7 @@ const RegisterPage = ({ isLaptop, isPortrait, register }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
+    const handleSubmit = async () => {
         const user = { name, email, password };
         handleOpenLoading();
         await register(user, navigate).then(() => {
@@ -34,7 +33,7 @@ const RegisterPage = ({ isLaptop, isPortrait, register }) => {
         });
     };
 
-    if (localStorage.token) {
+    if (useGetIsLoggedIn()) {
         return <Navigate to="/home" />;
     }
 
@@ -53,223 +52,26 @@ const RegisterPage = ({ isLaptop, isPortrait, register }) => {
                     // bgcolor: "green",
                 }}
             >
-                <Box
-                    className="register-header-box"
-                    sx={{
-                        width: "100vw",
-                        height: "10vh",
-                        // bgcolor: "red",
-                        display: "flex",
-                        // justifyContent: "center",
-                        // alignItems: "center",
-                    }}
-                >
-                    <Box
-                        className="register-header-center-box-1"
-                        sx={{
-                            width: "100%",
-                            // bgcolor: "orange",
-                            display: "flex",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <Box
-                            className="header-title-center-box-2"
-                            sx={{
-                                // bgcolor: "purple",
-                                width: "75%",
-                            }}
-                        >
-                            <Button
-                                className="register-header-button"
-                                sx={{
-                                    bgcolor: "#32c4a7",
-                                    width: isPortrait ? "90%" : "35%",
-                                    height: "75%",
-                                    color: "white",
-                                    borderRadius: "10px",
-                                    "&:hover": {
-                                        bgcolor: "#228572",
-                                    },
-                                    justifyContent: "flex-start",
-                                }}
-                                onClick={() => {
-                                    navigate("/welcome");
-                                }}
-                            >
-                                <ArrowBackIosNewIcon />{" "}
-                                <Typography textTransform="none">
-                                    Back to Welcome
-                                </Typography>
-                            </Button>
-                        </Box>
-                    </Box>
-                </Box>
+                <RegisterHeader
+                    isLaptop={isLaptop}
+                    isPortrait={isPortrait}
+                    navigate={navigate}
+                />
+                <RegisterMiddle
+                    isPortrait={isPortrait}
+                    name={name}
+                    setName={setName}
+                    email={email}
+                    setEmail={setEmail}
+                    password={password}
+                    setPassword={setPassword}
+                    handleSubmit={handleSubmit}
+                />
 
-                <Box
-                    className="register-title-box"
-                    sx={{
-                        width: "100vw",
-                        height: "12vh",
-                        height: isPortrait ? "12vh" : "15vh",
-                        // bgcolor: "blue",
-                        display: "flex",
-                        // alignItems: "center",
-                    }}
-                >
-                    <Box
-                        className="register-title-center-box-1"
-                        sx={{
-                            width: "100%",
-                            // bgcolor: "orange",
-                            display: "flex",
-                            justifyContent: "center",
-                            marginBottom: 0,
-                        }}
-                    >
-                        <Box
-                            className="register-title-center-box-2"
-                            sx={{
-                                // bgcolor: "purple",
-                                width: "75%",
-                            }}
-                        >
-                            <Typography
-                                variant={isPortrait || !isLaptop ? "h3" : "h1"}
-                                fontWeight="bold"
-                                sx={{ color: "#32c4a7" }}
-                            >
-                                Sign Up
-                            </Typography>
-                        </Box>
-                    </Box>
-                </Box>
-
-                <Box
-                    className="register-input-box"
-                    sx={{
-                        width: "100vw",
-                        height: "30vh",
-                        // bgcolor: "pink",
-                        display: "flex",
-                        alignItems: "center",
-                    }}
-                >
-                    <Box
-                        className="register-input-center-box-1"
-                        sx={{
-                            width: "100%",
-                            height: "100%",
-                            // bgcolor: "orange",
-                            display: "flex",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <Box
-                            className="register-input-center-box-2"
-                            sx={{
-                                // bgcolor: "purple",
-                                width: "75%",
-                            }}
-                        >
-                            <RegisterInputs
-                                name={name}
-                                setName={setName}
-                                email={email}
-                                setEmail={setEmail}
-                                password={password}
-                                setPassword={setPassword}
-                            />
-                        </Box>
-                    </Box>
-                </Box>
-
-                <Box
-                    className="register-submit-box"
-                    sx={{
-                        width: "100vw",
-                        height: "10vh",
-                        // bgcolor: "red",
-                        display: "flex",
-                        // justifyContent: "center",
-                        // alignItems: "center",
-                    }}
-                >
-                    <Box
-                        className="register-submit-center-box-1"
-                        sx={{
-                            width: "100%",
-                            // bgcolor: "orange",
-                            display: "flex",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <Box
-                            className="submit-title-center-box-2"
-                            sx={{
-                                // bgcolor: "purple",
-                                width: "75%",
-                                display: "flex",
-                                alignItems: "center",
-                            }}
-                        >
-                            <Button
-                                sx={{
-                                    bgcolor: "#32c4a7",
-                                    width: isPortrait ? "90%" : "35%",
-                                    height: "75%",
-                                    color: "white",
-                                    borderRadius: "10px",
-                                    "&:hover": {
-                                        bgcolor: "#228572",
-                                    },
-                                    justifyContent: "center",
-                                }}
-                                onClick={handleSubmit}
-                            >
-                                <Typography textTransform="none">
-                                    Sign Up
-                                </Typography>{" "}
-                                <PersonAddAltIcon />
-                            </Button>
-                        </Box>
-                    </Box>
-                </Box>
-
-                <Box
-                    className="register-title-box"
-                    sx={{
-                        width: "100vw",
-                        // height: "12vh",
-                        height: isPortrait ? "12vh" : "15vh",
-                        // bgcolor: "blue",
-                        display: "flex",
-                        // alignItems: "center",
-                    }}
-                >
-                    <Box
-                        className="register-title-center-box-1"
-                        sx={{
-                            width: "100%",
-                            // bgcolor: "orange",
-                            display: "flex",
-                            justifyContent: "center",
-                            marginBottom: 0,
-                        }}
-                    >
-                        <Box
-                            className="register-title-center-box-2"
-                            sx={{
-                                // bgcolor: "purple",
-                                width: "75%",
-                            }}
-                        >
-                            <Link to="/login">
-                                Already Have an account? Login
-                            </Link>
-                        </Box>
-                    </Box>
-                </Box>
+                <RegisterFooter
+                    isPortrait={isPortrait}
+                    handleSubmit={handleSubmit}
+                />
             </Box>
             <LoadingModal
                 isLaptop={isLaptop}

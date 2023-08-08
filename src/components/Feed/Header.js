@@ -154,6 +154,7 @@ export const Header = ({ isLaptop, isPortrait }) => {
                 </Box>
             </Box>
             <AccountModal
+                isPopup={true}
                 isLaptop={isLaptop}
                 isPortrait={isPortrait}
                 open={open}

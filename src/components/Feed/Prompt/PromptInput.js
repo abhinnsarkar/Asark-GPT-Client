@@ -88,6 +88,7 @@ export const PromptInput = ({ isLaptop, isPortrait, sendPrompt }) => {
                     style: labelStyle,
                 }}
                 sx={{
+                    marginTop: "1%",
                     width: "99%",
                     ".MuiOutlinedInput-root": {
                         borderRadius: "10px",

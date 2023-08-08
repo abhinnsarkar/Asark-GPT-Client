@@ -9,9 +9,11 @@ export const Footer = ({ isLaptop, isPortrait }) => {
                 width: "100%",
                 display: "flex",
                 justifyContent: "center",
-                height: "100%",
-                paddingTop: "1vh",
-                color: "red",
+                alignItems: "flex-end",
+                // height: "100%",
+                // paddingTop: "1vh",
+                // bgcolor: "blue",
+                // marginBottom: "1%",
             }}
         >
             <PromptInput isLaptop={isLaptop} isPortrait={isPortrait} />

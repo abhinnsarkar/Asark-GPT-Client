@@ -6,13 +6,7 @@ import { getActions } from "../../store/actions/alertActions";
 
 const AlertNotification = ({ closeAlertMessage }) => {
     const alert = useSelector((state) => state.alertReducer.alert);
-    // console.log(
-    //     "______________________________________________________________"
-    // );
-    // console.log("alert from compoentn is ", alert);
-    // console.log(
-    //     "______________________________________________________________"
-    // );
+    console.log("alert", alert);
 
     return (
         <Snackbar
@@ -21,7 +15,7 @@ const AlertNotification = ({ closeAlertMessage }) => {
             onClose={closeAlertMessage}
             autoHideDuration={3000}
         >
-            <Alert severity={alert.alertSeverity} variant="filled">
+            <Alert severity={alert.severity} variant="filled">
                 {alert.alertMessageContent}
             </Alert>
         </Snackbar>

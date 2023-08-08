@@ -11,6 +11,7 @@ export const apiClient = axios.create({
 
 export const login = async (data) => {
     console.log("entered api login");
+    console.log("data  ", data);
     try {
         console.log("inside api login try");
         console.log(`Giving endpoint data : ${data}`);

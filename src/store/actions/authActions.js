@@ -60,6 +60,9 @@ export const login = (user, navigate) => {
         console.log(response);
 
         if (response.error) {
+            console.log("login error");
+            // console.log(response);
+            console.log(response?.exception?.response?.data);
             dispatch(
                 openAlertMessage(response?.exception?.response?.data, "error")
             );

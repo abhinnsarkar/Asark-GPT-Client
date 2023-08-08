@@ -5,9 +5,19 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import LoginInputs from "./LoginInputs";
 import { connect } from "react-redux";
 import { getActions } from "../../../store/actions/authActions";
+import { LoadingModal } from "../../Feed/LoadingModal";
 
 const LoginPage = ({ isLaptop, isPortrait, login }) => {
     const navigate = useNavigate();
+
+    const [loadingOpen, setLoadingOpen] = React.useState(false);
+    const handleOpenLoading = () => setLoadingOpen(true);
+    const handleCloseLoading = () => setLoadingOpen(false);
+
+    const closeModal = () => {
+        console.log("closing modal");
+        handleCloseLoading();
+    };
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,7 +26,10 @@ const LoginPage = ({ isLaptop, isPortrait, login }) => {
         e.preventDefault();
 
         const user = { email, password };
-        await login(user, navigate);
+        handleOpenLoading();
+        await login(user, navigate).then(() => {
+            closeModal();
+        });
     };
 
     if (localStorage.token) {
@@ -254,6 +267,11 @@ const LoginPage = ({ isLaptop, isPortrait, login }) => {
                     </Box>
                 </Box>
             </Box>
+            <LoadingModal
+                isLaptop={isLaptop}
+                isPortrait={isPortrait}
+                open={loadingOpen}
+            />
         </React.Fragment>
     );
 };

@@ -58,7 +58,7 @@ const DeleteAccountModal = ({
                     border: "2px solid #32c4a7",
                     borderRadius: "15px",
                     boxShadow: 24,
-                    p: 4,
+                    // p: 4,
                 }}
             >
                 <Box
@@ -93,7 +93,7 @@ const DeleteAccountModal = ({
                                 WARNING: this action can NOT be undone
                             </Typography>
                         </DialogContentText>
-                        <br></br>
+                        {/* <br></br> */}
                         <Switch
                             sx={{
                                 "& .MuiSwitch-switchBase": {

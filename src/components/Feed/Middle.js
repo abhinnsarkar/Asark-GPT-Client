@@ -4,7 +4,7 @@ import store from "../../store/store";
 import { Logout } from "./Account/Logout";
 import { DeleteAccount } from "./Account/DeleteAccount";
 import { makeStyles } from "@mui/styles";
-import Avatar from "../../shared/utils/Avatar";
+import Avatar from "../../shared/components/Avatar";
 import { Footer } from "./Footer";
 import History from "./History/History";
 import { useSelector } from "react-redux";
@@ -19,9 +19,15 @@ const useStyles = makeStyles((theme) => ({
 export const Middle = ({ isLaptop, isPortrait }) => {
     const classes = useStyles();
 
-    const user = useSelector((state) => state.authReducer.user);
-    const email = useSelector((state) => state.authReducer.user.email);
-    const usersname = useSelector((state) => state.authReducer.user.name);
+    // const user = useSelector((state) => state.authReducer.user);
+    const user = JSON.parse(useSelector((state) => state.authReducer.user));
+    const email = user.email;
+    const usersname = user.name;
+    // const usersname = useSelector((state) => state.authReducer.user.name);
+    // console.log(
+    //     "user ",
+    //     JSON.parse(useSelector((state) => state.authReducer.user))
+    // );
 
     return (
         <React.Fragment>
@@ -181,7 +187,7 @@ export const Middle = ({ isLaptop, isPortrait }) => {
                     sx={{
                         width: isPortrait || !isLaptop ? "100%" : "60%",
                         height: "100%",
-                        // bgcolor: "red",
+                        // bgcolor: "pink",
                     }}
                 >
                     <Box
@@ -208,8 +214,8 @@ export const Middle = ({ isLaptop, isPortrait }) => {
                             alignItems: "center",
                             justifyContent: "center",
                             height: "12%",
-                            paddingTop:
-                                !isLaptop && !isPortrait ? "5vh" : "1vh",
+                            // paddingTop:
+                            //     !isLaptop && !isPortrait ? "5vh" : "1vh",
                         }}
                     >
                         <Footer isLaptop={isLaptop} isPortrait={isPortrait} />

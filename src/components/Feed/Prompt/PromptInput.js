@@ -50,19 +50,19 @@ export const PromptInput = ({ isLaptop, isPortrait, sendPrompt }) => {
     };
 
     const CssTextField = styled(TextField)({
-        "& label.Mui-focused": {
-            color: "white",
-        },
-        "& .MuiInput-underline:after": {
-            borderBottomColor: "#32c4a7",
-        },
+        // "& label.Mui-focused": {
+        //     color: "white",
+        // },
+        // "& .MuiInput-underline:after": {
+        //     borderBottomColor: "#32c4a7",
+        // },
         "& .MuiOutlinedInput-root": {
             "& fieldset": {
                 borderColor: "#32c4a7",
             },
-            "&:hover fieldset": {
-                borderColor: "#32c4a7",
-            },
+            // "&:hover fieldset": {
+            //     borderColor: "#32c4a7",
+            // },
             "&.Mui-focused fieldset": {
                 borderColor: "#32c4a7",
             },
@@ -75,7 +75,66 @@ export const PromptInput = ({ isLaptop, isPortrait, sendPrompt }) => {
         color: "white",
     };
 
+    const MainContainer = styled("div")({
+        height: "50%",
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+    });
+
+    const Input = styled("input")({
+        backgroundColor: "#202123",
+        borderColor: "#32c4a7",
+        width: "97%",
+        height: "100%",
+        color: "white",
+        // border: "none",
+        borderRadius: "10px",
+        fontSize: "14px",
+        padding: "0 10px",
+        // marginBottom: "0px",
+    });
+
     return (
+        // <>
+        //     <MainContainer>
+        //         <Input
+        //             placeholder="Prompt"
+        //             value={promptValue}
+        //             onChange={handlePromptChange}
+        //             onKeyDown={handleKeyDown}
+        //         />
+
+        //         <IconButton
+        //             color="primary"
+        //             edge="end"
+        //             sx={{
+        //                 "&:hover": {
+        //                     bgcolor: "#32c4a7",
+        //                 },
+        //                 marginRight: "0.25em",
+        //             }}
+        //             onClick={handleSend}
+        //         >
+        //             <SendIcon />
+        //         </IconButton>
+        //     </MainContainer>
+        //     <AnswerModal
+        //         isLaptop={isLaptop}
+        //         isPortrait={isPortrait}
+        //         open={answerOpen}
+        //         handleClose={closeModal}
+        //         user={promptValue}
+        //         ai={aiValue}
+        //     />
+        //     <LoadingModal
+        //         isLaptop={isLaptop}
+        //         isPortrait={isPortrait}
+        //         open={loadingOpen}
+        //     />
+        // </>
+
         <>
             <CssTextField
                 label="Prompt..."
@@ -88,7 +147,8 @@ export const PromptInput = ({ isLaptop, isPortrait, sendPrompt }) => {
                     style: labelStyle,
                 }}
                 sx={{
-                    marginTop: "1%",
+                    borderWidth: "2px",
+                    // marginTop: "1%",
                     width: "99%",
                     ".MuiOutlinedInput-root": {
                         borderRadius: "10px",

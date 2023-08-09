@@ -9,6 +9,7 @@ const accountReducer = (state = initState, action) => {
     switch (action.type) {
         case ACCOUNT_DELETED:
         case LOGOUT:
+            console.log("in account reducer");
             localStorage.removeItem("token");
             localStorage.removeItem("user");
             logout();

@@ -10,10 +10,10 @@ import {
 } from "../actions/types";
 
 const initState = {
-    user: JSON.parse(localStorage.getItem("user")),
+    user: localStorage.getItem("user"),
     // token: JSON.parse(localStorage.getItem("token")),
     token: localStorage.getItem("token"),
-    isAuthenticated: null,
+    isAuthenticated: false,
     loading: false,
 };
 // const initState = {
@@ -36,9 +36,14 @@ const authReducer = (state = initState, action) => {
         case REGISTER_SUCCESS:
         case LOGIN_SUCCESS:
             console.log("login/register payload ", action.payload);
+            const token = action.payload.token;
+            const user = action.payload.user;
             console.log("type of ", typeof action.payload);
-            console.log("payload token ", action.payload.token);
-            localStorage.setItem("token", action.payload.token);
+            console.log("payload token ", token);
+            console.log("payload user ", user);
+            localStorage.setItem("token", token);
+            localStorage.setItem("user", JSON.stringify(user));
+
             console.log("state = ", state);
             return {
                 ...state,

@@ -1,8 +1,10 @@
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 export const apiClient = axios.create({
     // baseURL: process.env.SERVER,
     baseURL: "https://asark-gpt-backend.onrender.com",
+    // baseURL: "http://localhost:1234",
     timeout: 10000,
     headers: {
         "Content-Type": "application/json",
@@ -28,6 +30,7 @@ export const register = async (data) => {
     console.log("entered api register");
     try {
         console.log("inside api register try");
+        console.log(data);
         console.log(`Giving endpoint data : ${data}`);
         return await apiClient.post("/api/auth/register", data);
     } catch (exception) {
@@ -42,7 +45,13 @@ export const deleteAccount = async () => {
     console.log("entered api delete account");
     try {
         console.log("inside api delete account try");
-        return await apiClient.post("/api/account/delete");
+        console.log("token", localStorage.getItem("token"));
+        // apiClient.headers["x-auth-token"] = localStorage.getItem("token");
+        const headers = {
+            "x-auth-token": localStorage.getItem("token"),
+        };
+
+        return await apiClient.post("/api/account/delete", headers);
     } catch (exception) {
         return {
             error: true,

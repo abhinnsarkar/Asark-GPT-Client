@@ -13,7 +13,7 @@ const AlertNotification = ({ closeAlertMessage }) => {
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
             open={alert.showAlertMessage}
             onClose={closeAlertMessage}
-            autoHideDuration={3000}
+            autoHideDuration={5000}
         >
             <Alert severity={alert.severity} variant="filled">
                 {alert.alertMessageContent}

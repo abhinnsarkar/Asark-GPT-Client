@@ -16,6 +16,7 @@ export const getActions = (dispatch) => {
 };
 
 const setUser = (payload) => {
+    console.log("setting user with payload", payload);
     return {
         type: authActions.SET_USER,
         payload,
@@ -25,10 +26,13 @@ const setUser = (payload) => {
 export const register = (user, navigate) => {
     return async (dispatch) => {
         const response = await api.register(user);
-        console.log(response);
+        console.log("response from registyer", response);
         if (response.error) {
             dispatch(
-                openAlertMessage(response?.exception?.response?.data, "error")
+                openAlertMessage(
+                    response?.exception?.response?.data.msg,
+                    "error"
+                )
             );
             console.log("error");
             console.log(response);
@@ -64,7 +68,10 @@ export const login = (user, navigate) => {
             // console.log(response);
             console.log(response?.exception?.response?.data);
             dispatch(
-                openAlertMessage(response?.exception?.response?.data, "error")
+                openAlertMessage(
+                    response?.exception?.response?.data.msg,
+                    "error"
+                )
             );
             console.log("error");
             console.log(response);

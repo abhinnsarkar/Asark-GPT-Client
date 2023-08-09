@@ -3,7 +3,7 @@ import { Box, Modal, Typography, IconButton } from "@mui/material";
 import React from "react";
 import { connect, useSelector } from "react-redux";
 import { makeStyles } from "@mui/styles";
-import Avatar from "../../../shared/utils/Avatar";
+import Avatar from "../../../shared/components/Avatar";
 import store from "../../../store/store";
 import { Logout } from "./Logout";
 import { DeleteAccount } from "./DeleteAccount";
@@ -16,13 +16,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 const AccountModal = ({ isPopup, isLaptop, isPortrait, open, handleClose }) => {
     const classes = useStyles();
-
+    var email;
+    var usersname;
     console.log("store state is", typeof store.getState());
 
-    // const user = store.getState().authReducer.user;
     const user = useSelector((state) => state.authReducer.user);
-    const email = useSelector((state) => state.authReducer.user.email);
-    const usersname = useSelector((state) => state.authReducer.user.name);
+    console.log("user is of type ", typeof user);
+    if (typeof user === "string") {
+        email = JSON.parse(user).email;
+        usersname = JSON.parse(user).name;
+    } else {
+        console.log("in the else of the account modal");
+        console.log(store.getState());
+        email = user.email;
+        usersname = user.name;
+    }
+
     // const email = store.getState().authReducer.user.email;
     // const name = store.getState().authReducer.user.name;
 
@@ -45,7 +54,7 @@ const AccountModal = ({ isPopup, isLaptop, isPortrait, open, handleClose }) => {
                     border: "2px solid #32c4a7",
                     borderRadius: "15px",
                     boxShadow: 24,
-                    p: 4,
+                    // p: 4,
                     display: "flex",
                     alignItems: "center",
                     flexDirection: "column",
@@ -57,6 +66,7 @@ const AccountModal = ({ isPopup, isLaptop, isPortrait, open, handleClose }) => {
                             width: "100%",
                             display: "flex",
                             justifyContent: "end",
+                            // bgcolor: "red",
                         }}
                     >
                         <IconButton onClick={handleClose}>
@@ -66,14 +76,15 @@ const AccountModal = ({ isPopup, isLaptop, isPortrait, open, handleClose }) => {
                     <Box
                         className="box-main"
                         sx={{
-                            width: isPortrait || !isLaptop ? "100%" : "50%",
+                            width: isPortrait || !isLaptop ? "90%" : "50%",
+                            // bgcolor: "green",
                             marginTop: "1%",
-                            height: "99%",
+                            height: "98%",
                             bgcolor: "#202123",
-                            border: "2px solid #32c4a7",
+                            // border: "2px solid #32c4a7",
                             borderRadius: "15px",
-                            boxShadow: 24,
-                            p: 4,
+                            // boxShadow: 24,
+                            // p: 4,
                         }}
                     >
                         <Box
@@ -81,7 +92,8 @@ const AccountModal = ({ isPopup, isLaptop, isPortrait, open, handleClose }) => {
                             color="primary"
                             sx={{
                                 marginTop: "2%",
-                                bgcolor: "#202123",
+                                // bgcolor: "#202123",
+                                // bgcolor: "blue",
                                 textAlign: "center",
                                 flexDirection: "column",
                                 display: "flex",

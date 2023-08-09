@@ -12,18 +12,24 @@ export const getActions = (dispatch) => {
 export const deleteAccount = (navigate) => {
     console.log(`Delete Account action received`);
     return async (dispatch) => {
-        console.log(`Delete Account action received`);
-
         const response = await api.deleteAccount();
-        console.log(response);
+        console.log("response frin dkete", response);
 
         if (response.error) {
-            dispatch(openAlertMessage(response?.exception?.response?.data, "danger"));
+            dispatch(
+                openAlertMessage(
+                    response?.exception?.response?.data.msg,
+                    "danger"
+                )
+            );
             console.log("error");
             console.log(response);
         } else {
+            console.log("logging out");
             logout();
-            dispatch(openAlertMessage("Successfully Deleted Account", "success"));
+            dispatch(
+                openAlertMessage("Successfully Deleted Account", "success")
+            );
             navigate("/welcome");
         }
     };

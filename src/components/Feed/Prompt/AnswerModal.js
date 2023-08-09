@@ -12,8 +12,8 @@ const AnswerModal = ({ isLaptop, isPortrait, open, handleClose, user, ai }) => {
                     top: "50%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",
-                    width: isPortrait || !isLaptop ? "95vw" : "75vw",
-                    height: isPortrait || !isLaptop ? "95vh" : "75vh",
+                    width: isPortrait || !isLaptop ? "100vw" : "75vw",
+                    height: isPortrait || !isLaptop ? "100vh" : "75vh",
                     bgcolor: "#202123",
                     border: "5px solid #32c4a7",
                     borderRadius: "15px",
@@ -48,7 +48,7 @@ const AnswerModal = ({ isLaptop, isPortrait, open, handleClose, user, ai }) => {
                         className="user-box"
                         sx={{
                             width: "95%",
-                            maxHeight: isPortrait ? "5vh" : "20vh",
+                            maxHeight: isPortrait ? "10vh" : "20vh",
                             overflow: "auto",
                             display: "-webkit-box",
                             color: "white",

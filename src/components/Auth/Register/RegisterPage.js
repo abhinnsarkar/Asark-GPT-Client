@@ -2,7 +2,7 @@ import { Box, CssBaseline } from "@mui/material";
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { getActions } from "../../../store/actions/authActions";
+import { getAuthActions } from "../../../store/actions/authActions";
 import { LoadingModal } from "../../Feed/LoadingModal";
 import RegisterHeader from "./RegisterHeader";
 import RegisterMiddle from "./RegisterMiddle";
@@ -84,7 +84,7 @@ const RegisterPage = ({ isLaptop, isPortrait, register }) => {
 
 const mapActionsToProps = (dispatch) => {
     return {
-        ...getActions(dispatch),
+        ...getAuthActions(dispatch),
     };
 };
 

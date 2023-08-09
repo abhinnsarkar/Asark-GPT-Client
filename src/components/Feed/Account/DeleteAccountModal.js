@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import {
     deleteAccount,
-    getActions,
+    getAccountActions,
 } from "../../../store/actions/accountActions";
 import React from "react";
 import { connect } from "react-redux";
@@ -34,6 +34,21 @@ const DeleteAccountModal = ({
         // console.log("changed to ", !checked);
     };
 
+    console.log("laptop", isLaptop);
+    var fullScreen;
+    if (isLaptop) {
+        fullScreen = false;
+    } else {
+        fullScreen = true;
+    }
+    // const verticalPhone = !isLaptop && isPortrait;
+    // console.log("vertical phone", verticalPhone);
+    // const horizontalPhone = !isLaptop && !isPortrait;
+    // console.log("horizontal phone", horizontalPhone);
+
+    // const fullScreen = verticalPhone || horizontalPhone;
+    console.log("fullscreen ", fullScreen);
+
     const handleClick = async () => {
         console.log("clicked");
         await deleteAccount(navigate);
@@ -48,17 +63,14 @@ const DeleteAccountModal = ({
                     top: "50%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",
-                    // width: "75vw",
-                    // width: isPortrait || !isLaptop ? "95vw" : "75vw",
-                    // height: isPortrait || !isLaptop ? "95vh" : "75vh",
-                    width: isPortrait || !isLaptop ? "100vw" : "75vw",
-                    height: isPortrait || !isLaptop ? "100vh" : "75vh",
-                    // height: "75vh",
+                    width: fullScreen ? "100vw" : "75vw",
+                    height: fullScreen ? "100vh" : "75vh",
                     bgcolor: "#202123",
-                    border: "2px solid #32c4a7",
+                    // bgcolor: "red",
+                    border: "5px solid #32c4a7",
                     borderRadius: "15px",
                     boxShadow: 24,
-                    // p: 4,
+                    p: 4,
                 }}
             >
                 <Box
@@ -207,7 +219,7 @@ const DeleteAccountModal = ({
 const mapActionsToProps = (dispatch) => {
     return {
         deleteAccount,
-        ...getActions(dispatch),
+        ...getAccountActions(dispatch),
     };
 };
 

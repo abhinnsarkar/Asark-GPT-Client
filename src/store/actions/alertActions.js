@@ -1,9 +1,6 @@
-const alertActions = {
-    OPEN_ALERT_MESSAGE: "ALERT.OPEN_ALERT_MESSAGE",
-    CLOSE_ALERT_MESSAGE: "ALERT.CLOSE_ALERT_MESSAGE",
-};
+import { OPEN_ALERT_MESSAGE, CLOSE_ALERT_MESSAGE } from "./types";
 
-export const getActions = (dispatch) => {
+export const getAlertActions = (dispatch) => {
     return {
         openAlertMessage: (content) => dispatch(openAlertMessage(content)),
         closeAlertMessage: () => dispatch(closeAlertMessage()),
@@ -12,7 +9,7 @@ export const getActions = (dispatch) => {
 
 export const openAlertMessage = (content, severity) => {
     return {
-        type: alertActions.OPEN_ALERT_MESSAGE,
+        type: OPEN_ALERT_MESSAGE,
         content,
         severity,
     };
@@ -20,8 +17,6 @@ export const openAlertMessage = (content, severity) => {
 
 export const closeAlertMessage = () => {
     return {
-        type: alertActions.CLOSE_ALERT_MESSAGE,
+        type: CLOSE_ALERT_MESSAGE,
     };
 };
-
-export default alertActions;

@@ -83,6 +83,7 @@ export const getMessages = async () => {
     console.log("entered api get messages");
     try {
         console.log("inside api get msg try");
+        console.log("token = ", localStorage.getItem("token"));
         const responseFromGet = await apiClient.get("/api/prompts");
         var msgs = [];
         for (

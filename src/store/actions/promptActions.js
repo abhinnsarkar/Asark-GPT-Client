@@ -3,7 +3,7 @@ import { logout } from "../../shared/utils/logout";
 
 import { openAlertMessage } from "./alertActions";
 
-export const getActions = (dispatch) => {
+export const getPromptActions = (dispatch) => {
     return {
         sendPrompt: (promptValue) => dispatch(sendPrompt(promptValue)),
         getMessages: () => dispatch(getMessages()),
@@ -26,7 +26,16 @@ export const sendPrompt = (promptValue) => {
             },
         };
 
-        dispatch(openAlertMessage(`Sending prompt ${promptValue}`, "info"));
+        dispatch(openAlertMessage(`Sending prompt : "${promptValue}"`, "info"));
+        setTimeout(() => {
+            dispatch(
+                openAlertMessage(
+                    "Please give some time for the AI to generate a response",
+                    "info"
+                )
+            );
+        }, 4000);
+
         return await api.sendPrompt(options);
     };
 };

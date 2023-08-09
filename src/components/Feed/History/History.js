@@ -3,7 +3,10 @@ import React, { useEffect, useState } from "react";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { Box, IconButton, Typography } from "@mui/material";
 import { HistoryItem } from "./HistoryItem";
-import { getMessages, getActions } from "../../../store/actions/promptActions";
+import {
+    getMessages,
+    getPromptActions,
+} from "../../../store/actions/promptActions";
 import { connect } from "react-redux";
 
 const History = ({ isLaptop, isPortrait, getMessages }) => {
@@ -42,6 +45,7 @@ const History = ({ isLaptop, isPortrait, getMessages }) => {
                 width: "99%",
                 height: "100%",
                 border: "2px solid #32c4a7",
+                // border: "2px solid red",
                 borderRadius: "10px",
                 display: "flex",
                 alignContent: "center",
@@ -54,7 +58,8 @@ const History = ({ isLaptop, isPortrait, getMessages }) => {
                 sx={{
                     width: "100%",
                     // height: "10%",
-                    height: !isLaptop ? "15%" : "10%",
+                    // height: !isLaptop ? "15%" : "10%",
+                    // height: isPortrait ? "10%" : "15%",
                     display: "flex",
                     alignContent: "center",
                     justifyContent: "space-between",
@@ -68,12 +73,13 @@ const History = ({ isLaptop, isPortrait, getMessages }) => {
                         alignContent: "center",
                         textAlign: "center",
                         // bgcolor: "red",
+                        alignItems: "center",
                     }}
                 >
                     <Typography
                         sx={{
                             // marginTop: "3%",
-                            marginTop: !isLaptop ? "0%" : "3%",
+                            // marginTop: !isLaptop ? "0%" : "3%",
                             marginLeft: "2%",
                         }}
                         variant={isPortrait || !isLaptop ? "h5" : "h4"}
@@ -111,8 +117,15 @@ const History = ({ isLaptop, isPortrait, getMessages }) => {
                 {msgsLoading ? (
                     <CircularProgress />
                 ) : (
-                    prevMsgs.map((chat) => {
-                        return <HistoryItem user={chat.user} ai={chat.ai} />;
+                    prevMsgs.map((chat, index) => {
+                        return (
+                            <HistoryItem
+                                key={index}
+                                isPortrait={isPortrait}
+                                user={chat.user}
+                                ai={chat.ai}
+                            />
+                        );
                     })
                 )}
             </Box>
@@ -123,7 +136,7 @@ const History = ({ isLaptop, isPortrait, getMessages }) => {
 const mapActionsToProps = (dispatch) => {
     return {
         getMessages,
-        ...getActions(dispatch),
+        ...getPromptActions(dispatch),
     };
 };
 

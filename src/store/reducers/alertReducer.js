@@ -1,34 +1,26 @@
-import alertActions from "../actions/alertActions";
+import { OPEN_ALERT_MESSAGE, CLOSE_ALERT_MESSAGE } from "../actions/types";
 
-// const initState = {
-//     showAlertMessage: false,
-//     alertMessageContent: null,
-// };
 const initState = {
     alert: {},
 };
 
 const alertReducer = (state = initState, action) => {
     switch (action.type) {
-        case alertActions.OPEN_ALERT_MESSAGE:
+        case OPEN_ALERT_MESSAGE:
+            console.log(action);
             return {
                 ...state,
                 alert: {
-                    showAlertMessage: true,
-                    alertMessageContent: action.content,
+                    visible: true,
+                    content: action.content,
                     severity: action.severity,
                 },
             };
-        case alertActions.CLOSE_ALERT_MESSAGE:
-            // return {
-            //     ...state,
-            //     showAlertMessage: false,
-            //     alertMessageContent: null,
-            //     severity: null,
-            // };
+        case CLOSE_ALERT_MESSAGE:
             return {
-                ...state,
-                alert: {},
+                // ...state,
+                // alert: {},
+                initState,
             };
         default:
             return state;

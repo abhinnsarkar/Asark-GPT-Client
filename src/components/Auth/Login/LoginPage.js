@@ -3,7 +3,7 @@ import { Box, CssBaseline } from "@mui/material";
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { getActions } from "../../../store/actions/authActions";
+import { getAuthActions } from "../../../store/actions/authActions";
 import { LoadingModal } from "../../Feed/LoadingModal";
 import LoginHeader from "./LoginHeader";
 import LoginMiddle from "./LoginMiddle";
@@ -81,7 +81,7 @@ const LoginPage = ({ isLaptop, isPortrait, login }) => {
 };
 const mapActionsToProps = (dispatch) => {
     return {
-        ...getActions(dispatch),
+        ...getAuthActions(dispatch),
     };
 };
 

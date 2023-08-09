@@ -15,6 +15,7 @@ const AnswerModal = ({ isLaptop, isPortrait, open, handleClose, user, ai }) => {
                     width: isPortrait || !isLaptop ? "100vw" : "75vw",
                     height: isPortrait || !isLaptop ? "100vh" : "75vh",
                     bgcolor: "#202123",
+                    // bgcolor: "red",
                     border: "5px solid #32c4a7",
                     borderRadius: "15px",
                     boxShadow: 24,

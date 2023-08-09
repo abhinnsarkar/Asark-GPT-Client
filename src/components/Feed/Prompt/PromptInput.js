@@ -3,11 +3,17 @@ import { LoadingModal } from "../LoadingModal";
 import React, { useState } from "react";
 import SendIcon from "@mui/icons-material/Send";
 
-import { connect } from "react-redux";
-import { sendPrompt, getActions } from "../../../store/actions/promptActions";
+import { connect, useDispatch } from "react-redux";
+import {
+    sendPrompt,
+    getPromptActions,
+    // getMessages,
+} from "../../../store/actions/promptActions";
 import AnswerModal from "./AnswerModal";
+import { openAlertMessage } from "../../../store/actions/alertActions";
 
-export const PromptInput = ({ isLaptop, isPortrait, sendPrompt }) => {
+// export const PromptInput = ({ isLaptop, isPortrait, sendPrompt }) => {
+export const PromptInput = ({ isLaptop, isPortrait, sendPrompt, dispatch }) => {
     const [answerOpen, setAnswerOpen] = React.useState(false);
     const handleOpenAnswer = () => setAnswerOpen(true);
     const handleCloseAnswer = () => setAnswerOpen(false);
@@ -16,11 +22,18 @@ export const PromptInput = ({ isLaptop, isPortrait, sendPrompt }) => {
     const handleOpenLoading = () => setLoadingOpen(true);
     const handleCloseLoading = () => setLoadingOpen(false);
 
-    const closeModal = () => {
+    const useCloseModal = async () => {
+        // const dispatch = useDispatch();
+        // const useCloseModal = (dispatch) => {
         console.log("closing modal");
         setPromptValue("");
         handleCloseLoading();
         handleCloseAnswer();
+        console.log("abt to display alert");
+        dispatch(
+            openAlertMessage("Click the realod icon to display message", "info")
+        );
+        // await getMessages();
     };
 
     const [promptValue, setPromptValue] = useState("");
@@ -124,7 +137,7 @@ export const PromptInput = ({ isLaptop, isPortrait, sendPrompt }) => {
         //         isLaptop={isLaptop}
         //         isPortrait={isPortrait}
         //         open={answerOpen}
-        //         handleClose={closeModal}
+        //         handleClose={useCloseModal}
         //         user={promptValue}
         //         ai={aiValue}
         //     />
@@ -179,7 +192,7 @@ export const PromptInput = ({ isLaptop, isPortrait, sendPrompt }) => {
                 isLaptop={isLaptop}
                 isPortrait={isPortrait}
                 open={answerOpen}
-                handleClose={closeModal}
+                handleClose={useCloseModal}
                 user={promptValue}
                 ai={aiValue}
             />
@@ -191,10 +204,18 @@ export const PromptInput = ({ isLaptop, isPortrait, sendPrompt }) => {
         </>
     );
 };
+// const mapActionsToProps = (dispatch) => {
+//     return {
+//         sendPrompt,
+//         ...getPromptActions(dispatch),
+//     };
+// };
+
 const mapActionsToProps = (dispatch) => {
     return {
         sendPrompt,
-        ...getActions(dispatch),
+        ...getPromptActions(dispatch),
+        dispatch, // Include the dispatch function in props
     };
 };
 

@@ -7,7 +7,7 @@ export const authActions = {
     SET_USER: "AUTH.SET_USER",
 };
 
-export const getActions = (dispatch) => {
+export const getAuthActions = (dispatch) => {
     return {
         login: (user, navigate) => dispatch(login(user, navigate)),
         register: (user, navigate) => dispatch(register(user, navigate)),
@@ -79,7 +79,7 @@ export const login = (user, navigate) => {
             console.log("logged in");
             const user = response.data.user;
             const token = response.data.token;
-            console.log("user :", user);
+            console.log("user :", JSON.stringify(user));
             console.log("token :", token);
             localStorage.setItem("token", JSON.stringify(token));
             localStorage.setItem("user", JSON.stringify(user));

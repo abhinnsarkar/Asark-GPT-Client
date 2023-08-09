@@ -37,12 +37,14 @@ const authReducer = (state = initState, action) => {
         case LOGIN_SUCCESS:
             console.log("login/register payload ", action.payload);
             const token = action.payload.token;
-            const user = action.payload.user;
+            // const token = JSON.stringify(action.payload.token);
+            // const user = action.payload.user;
+            const user = JSON.stringify(action.payload.user);
             console.log("type of ", typeof action.payload);
             console.log("payload token ", token);
             console.log("payload user ", user);
             localStorage.setItem("token", token);
-            localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("user", user);
 
             console.log("state = ", state);
             return {
@@ -50,8 +52,8 @@ const authReducer = (state = initState, action) => {
                 ...action.payload,
                 isAuthenticated: true,
                 loading: false,
-                user: action.payload.user,
-                token: action.payload.token,
+                user: user,
+                token: token,
             };
 
         case REGISTER_FAIL:

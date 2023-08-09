@@ -167,6 +167,7 @@ export const Middle = ({ isLaptop, isPortrait }) => {
                                             sx={{
                                                 width: "100%",
                                                 height: "100%",
+                                                // bgcolor: "green",
                                                 display: "flex",
                                                 flexDirection: "column",
                                                 alignItems: "center",
@@ -174,7 +175,10 @@ export const Middle = ({ isLaptop, isPortrait }) => {
                                             }}
                                         >
                                             <Logout />
-                                            <DeleteAccount />
+                                            <DeleteAccount
+                                                isLaptop={isLaptop}
+                                                isPortrait={isPortrait}
+                                            />
                                         </Box>
                                     </Box>
                                 </Box>
@@ -214,6 +218,7 @@ export const Middle = ({ isLaptop, isPortrait }) => {
                             alignItems: "center",
                             justifyContent: "center",
                             height: "12%",
+                            paddingTop: !isPortrait && !isLaptop ? "7vh" : "",
                             // paddingTop:
                             //     !isLaptop && !isPortrait ? "5vh" : "1vh",
                         }}

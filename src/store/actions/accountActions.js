@@ -3,7 +3,7 @@ import { logout } from "../../shared/utils/logout";
 
 import { openAlertMessage } from "./alertActions";
 
-export const getActions = (dispatch) => {
+export const getAccountActions = (dispatch) => {
     return {
         deleteAccount: (navigate) => dispatch(deleteAccount(navigate)),
     };

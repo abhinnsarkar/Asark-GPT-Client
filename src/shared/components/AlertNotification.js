@@ -2,23 +2,28 @@ import React from "react";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import { connect, useSelector } from "react-redux";
-import { getActions } from "../../store/actions/alertActions";
+import {
+    closeAlertMessage,
+    getAlertActions,
+} from "../../store/actions/alertActions";
 
 const AlertNotification = ({ closeAlertMessage }) => {
     const alert = useSelector((state) => state.alertReducer.alert);
     console.log("alert", alert);
 
-    return (
+    return alert ? (
         <Snackbar
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-            open={alert.showAlertMessage}
+            open={alert.visible}
             onClose={closeAlertMessage}
-            autoHideDuration={5000}
+            autoHideDuration={3000}
         >
             <Alert severity={alert.severity} variant="filled">
-                {alert.alertMessageContent}
+                {alert.content}
             </Alert>
         </Snackbar>
+    ) : (
+        <></>
     );
 };
 
@@ -30,7 +35,8 @@ const mapStoreStateToProps = ({ alert }) => {
 
 const mapActionsToProps = (dispatch) => {
     return {
-        ...getActions(dispatch),
+        closeAlertMessage,
+        ...getAlertActions(dispatch),
     };
 };
 
